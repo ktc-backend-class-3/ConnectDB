@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectDbApplication {
 
 	public static void main(String[] args) {
-		Connect conn = null;
+		Connect conn = new Connect();
 		PreparedStatement stat = null;
 		ResultSet resultSet = null;
 
@@ -16,13 +16,11 @@ public class ConnectDbApplication {
 
 	private static void insertStudentDB(Connect conn, PreparedStatement stat, ResultSet resultSet) {
 		try {
-			String query = "insert into student values (?, ?, ?)";
-			conn = new Connect();
 			// Gửi câu lệnh truy vấn tới database
-			stat = conn.openConnect().prepareStatement(query);
-			stat.setInt(1, 2);
-			stat.setString(2, "Tấn");
-			stat.setInt(3, 20);
+			stat = conn.openConnect().prepareStatement("insert into student values (?, ?, ?)");
+			stat.setInt(1, 4);
+			stat.setString(2, "Tạ");
+			stat.setInt(3, 15);
 			// Thực hiện truy vấn
 			int result = stat.executeUpdate();
 
@@ -47,7 +45,6 @@ public class ConnectDbApplication {
 
 	private static void selectStudentDB(Connect conn, PreparedStatement stat, ResultSet resultSet) {
 		try {
-			conn = new Connect();
 			// Gửi câu lệnh truy vấn tới database
 			stat = conn.openConnect().prepareStatement("select * from student");
 			// Thực hiện truy vấn
