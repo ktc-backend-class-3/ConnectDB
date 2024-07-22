@@ -12,7 +12,7 @@ public class Connect {
 
     public Connect() {
         url = "jdbc:oracle:thin:@localhost:1521:xe";
-        user = "system";
+        user = "ktc";
         pass = "123456";
     }
 
